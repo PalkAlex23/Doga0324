@@ -1,6 +1,8 @@
 package hu.szamalk.modell;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.Collator;
 import java.util.*;
 
@@ -34,6 +36,8 @@ public class Szak implements Comparator<Tantargy> {
     public void szakBeolvasasa() throws IOException, ClassNotFoundException {
         ObjectInputStream objKi = new ObjectInputStream(new FileInputStream("targyak.dat"));
         Szak sz1 = (Szak) objKi.readObject();
+        sz1.ujIdGeneralas();
+        System.out.println(sz1);
     }
 
     /*public List<Tantargy> getTargyakNevSzerint() {
@@ -46,6 +50,7 @@ public class Szak implements Comparator<Tantargy> {
 
     public void statisztika() throws IOException {
         String irhato = "statisztika.txt";
+        String szoveg = "";
         int kulonbTargy = 0;
         int osszKredit = 0;
         int minKredit = targyak.getFirst().getKredit();
@@ -62,6 +67,8 @@ public class Szak implements Comparator<Tantargy> {
                osszKredit += tantargy.getKredit();
             }
         }
+
+        Files.write(Path.of(irhato), szoveg.getBytes());
     }
 
     public ArrayList<Tantargy> getTargyak() {
