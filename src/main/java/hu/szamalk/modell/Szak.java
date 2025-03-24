@@ -8,7 +8,7 @@ public class Szak implements Comparator<Tantargy> {
     private String nev;
     private UUID azonosito;
 
-    private ArrayList<Tantargy> targyak;
+    public ArrayList<Tantargy> targyak;
 
     public Szak(String nev) {
         this.nev = nev;
@@ -36,17 +36,34 @@ public class Szak implements Comparator<Tantargy> {
         Szak sz1 = (Szak) objKi.readObject();
     }
 
-    public List<Tantargy> getTargyakNevSzerint() {
-        return new List<Tantargy>() {
-            @Override
-            public void sort(Comparator<Tantargy>) {
-                List.super.sort(c);
-            }
-        }
+    /*public List<Tantargy> getTargyakNevSzerint() {
+        *//* Be kell importálni valahogy a komparátort *//*
     }
 
     public List<Tantargy> getTargyakKreditSzerint() {
+        *//* Be kell importálni valahogy a komparátort *//*
+    }*/
 
+    public void statisztika() throws IOException {
+        String irhato = "statisztika.txt";
+        int kulonbTargy = 0;
+        int osszKredit = 0;
+        int minKredit = targyak.getFirst().getKredit();
+        int maxKredit = targyak.getFirst().getKredit();
+        for (Tantargy tantargy : targyak) {
+            if (tantargy.getNev() != "NÉV") {
+                if(tantargy.hashCode())
+
+               if (tantargy.getKredit() < minKredit) {
+                   minKredit = tantargy.getKredit();
+               }
+
+               if (tantargy.getKredit() > maxKredit) {
+                   maxKredit = tantargy.getKredit();
+               }
+               osszKredit += tantargy.getKredit();
+            }
+        }
     }
 
     public ArrayList<Tantargy> getTargyak() {

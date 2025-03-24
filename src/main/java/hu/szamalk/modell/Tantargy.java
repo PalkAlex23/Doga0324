@@ -1,13 +1,26 @@
 package hu.szamalk.modell;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Tantargy implements Serializable, Comparable<Tantargy> {
     private String nev, tanar1, tanar2, csakVizsga;
     private int kredit, felev;
 
     public Tantargy() {
-        this("tantargyak.txt");
+        this("matematika", "Kovács István", "Teller Ede", "igen", 2, 3);
+    }
+
+    public Tantargy(String nev, String tanar1, String tanar2, String csakVizsga, int kredit, int felev) {
+        this.nev = nev;
+        this.tanar1 = tanar1;
+        this.tanar2 = tanar2;
+        this.csakVizsga = csakVizsga;
+        if (kredit < 1 || kredit > 5) {
+            throw new KreditKorlatException();
+        }
+        this.kredit = kredit;
+        this.felev = felev;
     }
 
     public Tantargy(String sor) {
@@ -41,7 +54,20 @@ public class Tantargy implements Serializable, Comparable<Tantargy> {
     }
 
     @Override
-    public int compareTo(Tantargy o) {
-        return 0;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tantargy tantargy = (Tantargy) o;
+        return kredit == tantargy.kredit && felev == tantargy.felev && Objects.equals(nev, tantargy.nev);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nev, kredit, felev);
+    }
+
+    @Override
+    public int compareTo(Tantargy masik) {
+        return this.kredit - masik.kredit;
     }
 }
