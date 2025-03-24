@@ -15,6 +15,7 @@ public class Tantargy implements Serializable, Comparable<Tantargy> {
         this.nev = nev;
         this.tanar1 = tanar1;
         this.tanar2 = tanar2;
+        ellenorzo(this.tanar2);
         this.csakVizsga = csakVizsga;
         if (kredit < 1 || kredit > 5) {
             throw new KreditKorlatException();
@@ -39,6 +40,20 @@ public class Tantargy implements Serializable, Comparable<Tantargy> {
 
     public int getKredit() {
         return kredit;
+    }
+
+    public String getTanar1() {
+        return tanar1;
+    }
+
+    public String getTanar2() {
+        return tanar2;
+    }
+
+    public void ellenorzo(String tanar) {
+        if (Objects.equals(tanar, this.tanar1)) {
+            this.tanar2 = "-";
+        }
     }
 
     @Override

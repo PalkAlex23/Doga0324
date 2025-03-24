@@ -52,8 +52,6 @@ public class Szak implements Comparator<Tantargy> {
         int maxKredit = targyak.getFirst().getKredit();
         for (Tantargy tantargy : targyak) {
             if (tantargy.getNev() != "NÉV") {
-                if(tantargy.hashCode())
-
                if (tantargy.getKredit() < minKredit) {
                    minKredit = tantargy.getKredit();
                }
