@@ -41,11 +41,11 @@ public class Szak implements Comparator<Tantargy> {
     }
 
     /*public List<Tantargy> getTargyakNevSzerint() {
-        *//* Be kell importálni valahogy a komparátort *//*
+        *//* Be kell importálni valahogy a komparátort, lentebb van megírva *//*
     }
 
     public List<Tantargy> getTargyakKreditSzerint() {
-        *//* Be kell importálni valahogy a komparátort *//*
+        *//* Be kell importálni valahogy a komparátort, lentebb van megírva *//*
     }*/
 
     public void statisztika() throws IOException {
@@ -85,13 +85,6 @@ public class Szak implements Comparator<Tantargy> {
         public int compare(Tantargy egyik, Tantargy masik) {
             Collator collator = Collator.getInstance();
             return collator.compare(egyik.getNev(), masik.getNev());
-        }
-    }
-
-    public static class KreditKomparator implements Comparator<Tantargy> {
-        @Override
-        public int compare(Tantargy egyik, Tantargy masik) {
-            return egyik.getKredit() - masik.getKredit();
         }
     }
 }

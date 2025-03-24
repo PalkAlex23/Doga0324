@@ -42,4 +42,5 @@ class SzakTest {
 
         Assertions.assertThrows(KreditKorlatException.class, () -> new Tantargy("fizika", "Ónodi Elza", "Németh Sándor", "nem", 6, 3), "Nem megfelelő expection érkezett");
     }
+     /* Tesztelés VÉGE */
 }
